@@ -239,6 +239,39 @@
         </div>
     </div>
 </div>
+<script>
+    // Wait for the document to be ready
+    $(document).ready(function() {
+        // Add click event listener to the Pay Now button
+        $('.pay-button').click(function() {
+            // Check if the user is logged in (You need to replace this condition with your actual check)
+            var isLoggedIn = checkIfUserIsLoggedIn(); // You need to implement this function
+            
+            // If the user is logged in, proceed with payment
+            if (isLoggedIn) {
+                // Implement your payment logic here
+                // For example, redirect the user to the payment page
+                window.location.href = 'payment.html';
+            } else {
+                // If the user is not logged in, redirect to the login page
+                window.location.href = 'login.html';
+            }
+        });
+        
+        // Function to check if the user is logged in
+        function checkIfUserIsLoggedIn() {
+            // You need to implement this function to check if the user is logged in
+            // Return true if the user is logged in, false otherwise
+            // Example:
+            // if (userLoggedIn) {
+            //     return true;
+            // } else {
+            //     return false;
+            // }
+        }
+    });
+</script>
+
 
 
 <!--end-ckeckout-->

@@ -1,9 +1,4 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
+
 h4, h5, h6,
 h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;}
@@ -752,6 +747,7 @@ span.glyphicon.glyphicon-share-alt {
     margin: 0em 0em 1em 0em;
     outline: none;
 }
+
 .tems-right input[type="submit"] {
     font-size: 1em;
     font-weight: 400;
@@ -1439,6 +1435,19 @@ ul.cart-header li span h6,ul.cart-header1 li span h6,ul.cart-header2 li span h6{
     outline: none;
         float: right;
     margin-top: 2em;
+}
+.signin-main input[type="email"] {
+    font-size: 1em;
+    color: #000;
+    width: 48%;
+    padding: 0.4em 0.5em;
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    margin: 1em 2.5em 2em 0em;
 }
 .signin-main input[type="submit"]:hover {
 	background:#847057;
