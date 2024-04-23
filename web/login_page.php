@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -10,10 +13,8 @@
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href='//fonts.googleapis.com/css?family=Hind:400,500,300,600,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha512-tQxjl28o+Y4RxvWDV0SngPH8famT/S0YDzXtSTjBb+Jbz28oQK4CxH/YFLXSyY0eJAr7TGvgwycWjY3iyB+JjQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
 <script src="js/simpleCart.min.js"></script>
+<script src="https://kit.fontawesome.com/39971aae63.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         $(".scroll").not(".add-to-cart-btn").click(function(event){      
@@ -27,6 +28,7 @@
     symbol: 'Ksh'
 });
 </script>
+
 <script src="js/simpleCart.min.js"> </script>
 <script src="js/bootstrap.min.js"></script>
 </head>
@@ -46,18 +48,18 @@
 						        <span class="icon-bar"></span>
 					        </button>
 					        <div class="navbar-brand logo">
-								<a href="index.html"><img src="images/logo1.png" alt="" height="50" width="50"></a>
+								<a href="index.php"><img src="images/logo1.png" alt="" height="50" width="50"></a>
 							</div>
 					    </div>
 					    <!--/.navbar-header-->
 					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					        <ul class="nav navbar-nav">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="index.html">Hoodies</a></li>
-								<li><a href="index.html">Tees</a></li>
-								<li><a href="index.html">Caps</a></li>     
+								<li><a href="index.php">Home</a></li>
+								<li><a href="index.php">Hoodies</a></li>
+								<li><a href="index.php">Tees</a></li>
+								<li><a href="index.php">Caps</a></li>     
 						            
-						        <li><a href="contact.html">Contact</a></li>
+						        <li><a href="contact.php">Contact</a></li>
 					        </ul>
 					    </div>
 					    <!--/.navbar-collapse-->
@@ -71,7 +73,7 @@
 					    <input class="serch" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"/>
 					</div>
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 						<h3>
 							<img src="images/cart1.png" alt="" height="30" width="30"/>
 							<div class="total">
@@ -81,7 +83,7 @@
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 					</div>    
 					<div class="head-signin">
-						<h5><a href="login.html"><i class="hd-dign"></i>Sign in</a></h5>
+						<h5><a href="login_page.php"><i class="hd-dign"></i>Sign in</a></h5>
 					</div>              
                      <div class="clearfix"> </div>					
 				</div>
@@ -95,24 +97,25 @@
 <div class="login">
 	<div class="container">
 		<div class="login-main">
-			  <h1>Login</h1>
-		  <div class="col-md-6 login-left">
-			<h2>Existing User</h2>
-			<form>
-				<input type="email" placeholder="Email" required="">
-				<input type="password" placeholder="Password" required="">
-				<input type="submit" value="Login">
-			</form>
-		  </div>
-		  <div class="col-md-6 login-right">
-		  	 <h3>New User? Create an Account</h3>
-		  	 <p>Info</p>
-		     <a href="signup.html" class="login-btn">Create an Account </a>
-		  </div>
-		  <div class="clearfix"> </div>
+			<h1>Login</h1>
+			<div class="col-md-6 login-left">
+				<h2>Existing User</h2>
+				<form action="login.php" method="post"> 
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="password" placeholder="Password" required="">
+					<input type="submit" value="Login">
+				</form>
+			</div>
+			<div class="col-md-6 login-right">
+				<h3>New User? Create an Account</h3>
+				<p>If you don't have an account, please create one below:</p>
+				<a href="signup.php" class="login-btn">Create an Account</a>
+			</div>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 </div>
+
 <!--log in end here-->
 <!--footer strat here-->
 <div class="footer">
@@ -121,23 +124,23 @@
 			<div class="ftr-grids-block">
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="product.html">Hoodies</a></li>
-						<li><a href="product.html">Tees</a></li>
-						<li><a href="product.html">Caps</a></li>
-						<li><a href="product.html">Brands</a></li>
+						<li><a href="product.php">Hoodies</a></li>
+						<li><a href="product.php">Tees</a></li>
+						<li><a href="product.php">Caps</a></li>
+						<li><a href="product.php">Brands</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="login.html">Your Account</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-						<li><a href="product.html">Store Locator</a></li>
-						<li><a href="pressroom.html">Press Room</a></li>
+						<li><a href="login_page.php">Your Account</a></li>
+						<li><a href="contact.php">Contact Us</a></li>
+						<li><a href="product.php">Store Locator</a></li>
+						<li><a href="pressroom.php">Press Room</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="terms.html">Website Terms</a></li>
+						<li><a href="terms.php">Website Terms</a></li>
 						<li><select class="country">
 										<option value="select your location">Select Country</option>
 										<option value="saab">Kenya</option>
@@ -146,7 +149,7 @@
 									</select>
 							
 						</li>
-						<li><a href="shortcodes.html">Short Codes</a></li>
+						<li><a href="shortcodes.php">Short Codes</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid-icon">

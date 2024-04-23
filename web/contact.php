@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -15,6 +18,7 @@
 <script type="text/javascript" src="js/easing.js"></script>
 <script src="js/simpleCart.min.js"></script>
 <script type="text/javascript">
+	<script src="https://kit.fontawesome.com/39971aae63.js" crossorigin="anonymous"></script>
     jQuery(document).ready(function($) {
         $(".scroll").not(".add-to-cart-btn").click(function(event){      
             event.preventDefault();
@@ -27,6 +31,55 @@
     symbol: 'Ksh'
 });
 </script>
+<style>
+		.modal {
+	display: none; 
+	position: absolute;
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%;
+	overflow: auto; 
+	background-color: rgba(0, 0, 0, 0.4); 
+	}
+
+	.modal-content {
+	background-color: #fefefe;
+	margin: 10% auto; 
+	padding: 20px;
+	border: 1px solid #888;
+	width: 20%; 
+	}
+
+	.modal-content ul {
+	list-style: none;
+	padding: 0;
+	text-align: right;
+	}
+
+	.modal-content ul li {
+	margin-bottom: 10px;
+	}
+
+	.modal-content ul li a {
+	display: inline-block;
+	}
+
+	.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+	}
+</style>
 <script src="js/simpleCart.min.js"> </script>
 <script src="js/bootstrap.min.js"></script>
 </head>
@@ -46,18 +99,18 @@
 						        <span class="icon-bar"></span>
 					        </button>
 					        <div class="navbar-brand logo">
-								<a href="index.html"><img src="images/logo1.png" alt="" height="50" width="50"></a>
+								<a href="index.php"><img src="images/logo1.png" alt="" height="50" width="50"></a>
 							</div>
 					    </div>
 					    <!--/.navbar-header-->
 					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					        <ul class="nav navbar-nav">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="index.html">Hoodies</a></li>
-								<li><a href="index.html">Tees</a></li>
-								<li><a href="index.html">Caps</a></li>     
+								<li><a href="index.php">Home</a></li>
+								<li><a href="index.php">Hoodies</a></li>
+								<li><a href="index.php">Tees</a></li>
+								<li><a href="index.php">Caps</a></li>     
 						            
-						        <li><a href="contact.html">Contact</a></li>
+						        <li><a href="contact.php">Contact</a></li>
 					        </ul>
 					    </div>
 					    <!--/.navbar-collapse-->
@@ -71,7 +124,7 @@
 					    <input class="serch" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"/>
 					</div>
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 						<h3>
 							<img src="images/cart1.png" alt="" height="30" width="30"/>
 							<div class="total">
@@ -80,8 +133,8 @@
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 					</div>    
-					<div class="head-signin">
-						<h5><a href="login.html"><i class="hd-dign"></i>Sign in</a></h5>
+					<div class="head-signin" id="signin-section">
+						<h5 id="signin-link"><a href="login.php" id="signin-link"><i class="hd-dign"></i>Sign in</a></h5>
 					</div>              
                      <div class="clearfix"> </div>					
 				</div>
@@ -90,6 +143,82 @@
 		</div>
 	</div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var isLoggedIn = <?php echo isset($_SESSION['user_fname']) ? 'true' : 'false'; ?>;
+		var signInElement = document.getElementById("signin-link");
+
+		if (isLoggedIn) {
+			var firstName = "<?php echo isset($_SESSION['user_fname']) ? $_SESSION['user_fname'] : ''; ?>";
+			signInElement.innerHTML = '<a href="#" onclick="openProfileModal()"><i class="hd-dign"></i>' + firstName + '</a>';
+		} else {
+			signInElement.innerHTML = '<a href="login.php"><i class="hd-dign"></i> Sign In</a>';
+		}
+    });
+    </script>
+<!-- HTML for the popup modal -->
+
+<div id="profileModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <!-- Profile links -->
+    <ul style="list-style: none; padding: 0; text-align: center;">
+      <li style="margin-bottom: 10px;"><a href="my_account.php"><i class="fas fa-user"></i> My Account</a></li>
+      <li style="margin-bottom: 10px;"><a href="settings.php"><i class="fas fa-cog"></i> Settings</a></li>
+      <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+  var profileIcon = document.getElementById("profile-icon");
+  var modal = document.getElementById("profileModal");
+  var closeBtn = document.getElementsByClassName("close")[0];
+
+  profileIcon.addEventListener("click", function() {
+    modal.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
+</script>
+
+<script>
+// JavaScript to open the popup modal when the user clicks on their name
+document.addEventListener("DOMContentLoaded", function() {
+    var isLoggedIn = <?php echo isset($_SESSION['user_fname']) ? 'true' : 'false'; ?>;
+    var signInElement = document.getElementById("signin-link");
+
+    if (isLoggedIn) {
+        var firstName = "<?php echo isset($_SESSION['user_fname']) ? $_SESSION['user_fname'] : ''; ?>";
+        signInElement.innerHTML = '<a href="#" onclick="openProfileModal()"><i class="hd-dign"></i>' + firstName + '</a>';
+    }
+});
+
+// JavaScript function to open the popup modal
+function openProfileModal() {
+    var modal = document.getElementById("profileModal");
+    modal.style.display = "block";
+}
+
+// JavaScript function to close the popup modal
+document.getElementsByClassName("close")[0].onclick = function() {
+    var modal = document.getElementById("profileModal");
+    modal.style.display = "none";
+}
+</script>
 <!--header end here-->
 <!--contact start here-->
 <div class="contact">
@@ -138,23 +267,23 @@
 			<div class="ftr-grids-block">
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="product.html">Hoodies</a></li>
-						<li><a href="product.html">Tees</a></li>
-						<li><a href="product.html">Caps</a></li>
-						<li><a href="product.html">Brands</a></li>
+						<li><a href="product.php">Hoodies</a></li>
+						<li><a href="product.php">Tees</a></li>
+						<li><a href="product.php">Caps</a></li>
+						<li><a href="product.php">Brands</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="login.html">Your Account</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-						<li><a href="product.html">Store Locator</a></li>
-						<li><a href="pressroom.html">Press Room</a></li>
+						<li><a href="login_page.php">Your Account</a></li>
+						<li><a href="contact.php">Contact Us</a></li>
+						<li><a href="product.php">Store Locator</a></li>
+						<li><a href="pressroom.php">Press Room</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="terms.html">Website Terms</a></li>
+						<li><a href="terms.php">Website Terms</a></li>
 						<li><select class="country">
 										<option value="select your location">Select Country</option>
 										<option value="saab">Kenya</option>
@@ -163,7 +292,7 @@
 									</select>
 							
 						</li>
-						<li><a href="shortcodes.html">Short Codes</a></li>
+						<li><a href="shortcodes.php">Short Codes</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid-icon">

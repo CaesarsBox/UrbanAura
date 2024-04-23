@@ -8,9 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_lname = mysqli_real_escape_string($conn, $_POST["lname"]);
     $user_email = mysqli_real_escape_string($conn, $_POST["email"]);
     $password = mysqli_real_escape_string($conn, $_POST["password"]);
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $gender = mysqli_real_escape_string($conn, $_POST["gender"]);
-    $phone_number = mysqli_real_escape_string($conn, $_POST["phone_number"]);
 
     // Check if user with the same email already exists
     $check_email_query = "SELECT * FROM users WHERE user_email=?";
@@ -25,9 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert data into users table using prepared statement
-    $insert_query = "INSERT INTO users (user_fname, user_lname, user_email, password, gender, phone_number) VALUES (?, ?, ?, ?, ?, ?)";
+    // Insert data into users table using prepared statement
+    $insert_query = "INSERT INTO users (user_fname, user_lname, user_email, password, gender) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($insert_query);
-    $stmt->bind_param("ssssss", $user_fname, $user_lname, $user_email, $hashed_password, $gender, $phone_number);
+    $stmt->bind_param("sssss", $user_fname, $user_lname, $user_email, $hashed_password, $gender);
+
     if ($stmt->execute()) {
         // Registration successful, redirect to login.html with a success message
         echo '<script>alert("Registration successful. You can now login."); window.location.href = "login.html";</script>';

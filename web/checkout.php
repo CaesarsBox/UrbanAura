@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -13,6 +18,7 @@
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/39971aae63.js" crossorigin="anonymous"></script>
 <script src="js/simpleCart.min.js"></script>
 
 	<script type="text/javascript">
@@ -33,121 +39,168 @@
 <script src="js/bootstrap.min.js"></script>
 <style>
 	.shopping-cart {
-  width: 750px;
-  height: auto;
-  margin: 80px auto;
-  background: #FFFFFF;
-  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
-  border-radius: 6px;
- 
-  display: flex;
-  flex-direction: column;
-}
-.title {
-  height: 80px;
-  border-bottom: 1px solid #E1E8EE;
-  padding: 20px 30px;
-  color: #776b5e;
-  font-size: 18px;
-  font-weight: 400;
-}
- 
-.item {
-  padding: 20px 30px;
-  height: 120px;
-  display: flex;
-}
- 
+	width: 750px;
+	height: auto;
+	margin: 80px auto;
+	background: #FFFFFF;
+	box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+	border-radius: 6px;
+	
+	display: flex;
+	flex-direction: column;
+	}
+	.title {
+	height: 80px;
+	border-bottom: 1px solid #E1E8EE;
+	padding: 20px 30px;
+	color: #776b5e;
+	font-size: 18px;
+	font-weight: 400;
+	}
+	
+	.item {
+	padding: 20px 30px;
+	height: 120px;
+	display: flex;
+	}
+	
 
-@keyframes animate {
-  0%   { background-position: left;  }
-  50%  { background-position: right; }
-  100% { background-position: right; }
-}
-.image {
-  margin-right: 50px;
-}
-.description {
-  padding-top: 10px;
-  margin-right: 60px;
-  width: 115px;
-}
- 
-.description span {
-  display: block;
-  font-size: 14px;
-  color: #43484D;
-  font-weight: 400;
-}
- 
-.description span:first-child {
-  margin-bottom: 5px;
-}
-.description span:last-child {
-  font-weight: 300;
-  margin-top: 8px;
-  color: #86939E;
-}
-.quantity {
-  padding-top: 20px;
-  margin-right: 60px;
-}
-.quantity input {
-  -webkit-appearance: none;
-  border: none;
-  text-align: center;
-  width: 32px;
-  font-size: 16px;
-  color: #43484D;
-  font-weight: 300;
-}
+	@keyframes animate {
+	0%   { background-position: left;  }
+	50%  { background-position: right; }
+	100% { background-position: right; }
+	}
+	.image {
+	margin-right: 50px;
+	}
+	.description {
+	padding-top: 10px;
+	margin-right: 60px;
+	width: 115px;
+	}
+	
+	.description span {
+	display: block;
+	font-size: 14px;
+	color: #43484D;
+	font-weight: 400;
+	}
+	
+	.description span:first-child {
+	margin-bottom: 5px;
+	}
+	.description span:last-child {
+	font-weight: 300;
+	margin-top: 8px;
+	color: #86939E;
+	}
+	.quantity {
+	padding-top: 20px;
+	margin-right: 60px;
+	}
+	.quantity input {
+	-webkit-appearance: none;
+	border: none;
+	text-align: center;
+	width: 32px;
+	font-size: 16px;
+	color: #43484D;
+	font-weight: 300;
+	}
 
-.total-price {
-  width: 83px;
-  padding-top: 27px;
-  text-align: center;
-  font-size: 16px;
-  color: #43484D;
-  font-weight: 300;
-}
-@media (max-width: 800px) {
-  .shopping-cart {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-  }
-  .item {
-    height: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .image,
-  .quantity,
-  .description {
-    width: 100%;
-    text-align: center;
-    margin: 6px 0;
-  }
-  
-}
-.pay-button {
-    text-decoration: none;
-    color: #fff;
-    background:#752dea;
-    padding: 0.4em 0.8em;
-    font-size: 0.9em;
-    margin-top: 1.3em;
-    display: inline-block;  
-}
-.pay-button:hover {
-      background:#EA572D;
-      transition: 0.5s all;
-      -webkit-transition: 0.5s all;
-      -o-transition: 0.5s all;
-      -moz-transition: 0.5s all;
-      -ms-transition: 0.5s all;
-  }
+	.total-price {
+	width: 83px;
+	padding-top: 27px;
+	text-align: center;
+	font-size: 16px;
+	color: #43484D;
+	font-weight: 300;
+	}
+	@media (max-width: 800px) {
+	.shopping-cart {
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+	}
+	.item {
+		height: auto;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	
+	.image,
+	.quantity,
+	.description {
+		width: 100%;
+		text-align: center;
+		margin: 6px 0;
+	}
+	
+	}
+	.pay-button {
+		text-decoration: none;
+		color: #fff;
+		background:#752dea;
+		padding: 0.4em 0.8em;
+		font-size: 0.9em;
+		margin-top: 1.3em;
+		display: inline-block;  
+	}
+	.pay-button:hover {
+		background:#EA572D;
+		transition: 0.5s all;
+		-webkit-transition: 0.5s all;
+		-o-transition: 0.5s all;
+		-moz-transition: 0.5s all;
+		-ms-transition: 0.5s all;
+	}
+	.modal {
+	display: none; 
+	position: absolute;
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%;
+	overflow: auto; 
+	background-color: rgba(0, 0, 0, 0.4); 
+	}
+
+	.modal-content {
+	background-color: #fefefe;
+	margin: 10% auto; 
+	padding: 20px;
+	border: 1px solid #888;
+	width: 20%; 
+	}
+
+	.modal-content ul {
+	list-style: none;
+	padding: 0;
+	text-align: right;
+	}
+
+	.modal-content ul li {
+	margin-bottom: 10px;
+	}
+
+	.modal-content ul li a {
+	display: inline-block;
+	}
+
+	.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+	}
 </style>
 
 </head>
@@ -167,18 +220,18 @@
 						        <span class="icon-bar"></span>
 					        </button>
 					        <div class="navbar-brand logo">
-								<a href="index.html"><img src="images/logo1.png" alt="" height="50" width="50"></a>
+								<a href="index.php"><img src="images/logo1.png" alt="" height="50" width="50"></a>
 							</div>
 					    </div>
 					    <!--/.navbar-header-->
 					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					        <ul class="nav navbar-nav">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="index.html">Hoodies</a></li>
-								<li><a href="index.html">Tees</a></li>
-								<li><a href="index.html">Caps</a></li>     
+								<li><a href="index.php">Home</a></li>
+								<li><a href="index.php">Hoodies</a></li>
+								<li><a href="index.php">Tees</a></li>
+								<li><a href="index.php">Caps</a></li>     
 						            
-						        <li><a href="contact.html">Contact</a></li>
+						        <li><a href="contact.php">Contact</a></li>
 					        </ul>
 					    </div>
 					    <!--/.navbar-collapse-->
@@ -192,7 +245,7 @@
 					    <input class="serch" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"/>
 					</div>
 					<div class="cart box_1">
-						<a href="checkout.html">
+						<a href="checkout.php">
 						<h3>
 							<img src="images/cart1.png" alt="" height="30" width="30"/>
 							<div class="total">
@@ -201,9 +254,9 @@
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 					</div>    
-					<div class="head-signin">
-						<h5><a href="login.html"><i class="hd-dign"></i>Sign in</a></h5>
-					</div>              
+					<div class="head-signin" id="signin-section">
+						<h5 id="signin-link"><a href="login.php" id="signin-link"><i class="hd-dign"></i>Sign in</a></h5>
+					</div>             
                      <div class="clearfix"> </div>					
 				</div>
 			</div>
@@ -211,6 +264,87 @@
 		</div>
 	</div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if the user is logged in (you'll need to set a variable indicating the login status)
+        var isLoggedIn = <?php echo isset($_SESSION['user_fname']) ? 'true' : 'false'; ?>;
+        
+        // Get the element containing the "Sign in" link
+        var signInElement = document.getElementById("signin-link");
+
+        // If the user is logged in, replace "Sign in" with their first name
+        if (isLoggedIn) {
+            // Get the user's first name from the session variable
+            var firstName = "<?php echo isset($_SESSION['user_fname']) ? $_SESSION['user_fname'] : ''; ?>";
+
+            // Replace the text content of the link with the user's first name
+            signInElement.innerHTML = '<a href="profile.php"><i class="hd-dign"></i>' + firstName + '</a>';
+        }
+    });
+    </script>
+<!-- HTML for the popup modal -->
+
+<div id="profileModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <!-- Profile links -->
+    <ul style="list-style: none; padding: 0; text-align: center;">
+      <li style="margin-bottom: 10px;"><a href="my_account.php"><i class="fas fa-user"></i> My Account</a></li>
+      <li style="margin-bottom: 10px;"><a href="settings.php"><i class="fas fa-cog"></i> Settings</a></li>
+      <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+  var profileIcon = document.getElementById("profile-icon");
+  var modal = document.getElementById("profileModal");
+  var closeBtn = document.getElementsByClassName("close")[0];
+
+  profileIcon.addEventListener("click", function() {
+    modal.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
+</script>
+
+<script>
+// JavaScript to open the popup modal when the user clicks on their name
+document.addEventListener("DOMContentLoaded", function() {
+    var isLoggedIn = <?php echo isset($_SESSION['user_fname']) ? 'true' : 'false'; ?>;
+    var signInElement = document.getElementById("signin-link");
+
+    if (isLoggedIn) {
+        var firstName = "<?php echo isset($_SESSION['user_fname']) ? $_SESSION['user_fname'] : ''; ?>";
+        signInElement.innerHTML = '<a href="#" onclick="openProfileModal()"><i class="hd-dign"></i>' + firstName + '</a>';
+    }
+});
+
+// JavaScript function to open the popup modal
+function openProfileModal() {
+    var modal = document.getElementById("profileModal");
+    modal.style.display = "block";
+}
+
+// JavaScript function to close the popup modal
+document.getElementsByClassName("close")[0].onclick = function() {
+    var modal = document.getElementById("profileModal");
+    modal.style.display = "none";
+}
+</script>	
 <!--header end here-->
 <!--start-ckeckout-->
 <div class="checkout">
@@ -219,18 +353,13 @@
         <div class="title">
             Shopping Bag
         </div>
-        <!-- Cart items container -->
         <div class="cart-items-container">
-            <!-- Cart items list -->
             <div class="cart-items-list">
-                <!-- Cart items will be dynamically added here -->
-                <!-- Each cart item block -->
                 <div class="item">
-                    <!-- Content of each item -->
+
                 </div>
             </div>
         </div>
-        <!-- Total Order Amount and Pay Now button -->
 		<br>
 		<br>
         <div class="total-order-amount">
@@ -251,24 +380,12 @@
             if (isLoggedIn) {
                 // Implement your payment logic here
                 // For example, redirect the user to the payment page
-                window.location.href = 'payment.html';
+                window.location.href = 'payment.php';
             } else {
                 // If the user is not logged in, redirect to the login page
-                window.location.href = 'login.html';
+                window.location.href = 'login.php';
             }
         });
-        
-        // Function to check if the user is logged in
-        function checkIfUserIsLoggedIn() {
-            // You need to implement this function to check if the user is logged in
-            // Return true if the user is logged in, false otherwise
-            // Example:
-            // if (userLoggedIn) {
-            //     return true;
-            // } else {
-            //     return false;
-            // }
-        }
     });
 </script>
 
@@ -352,23 +469,23 @@ function populateCartItems() {
 			<div class="ftr-grids-block">
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="product.html">Hoodies</a></li>
-						<li><a href="product.html">Tees</a></li>
-						<li><a href="product.html">Caps</a></li>
-						<li><a href="product.html">Brands</a></li>
+						<li><a href="product.php">Hoodies</a></li>
+						<li><a href="product.php">Tees</a></li>
+						<li><a href="product.php">Caps</a></li>
+						<li><a href="product.php">Brands</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="login.html">Your Account</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-						<li><a href="product.html">Store Locator</a></li>
-						<li><a href="pressroom.html">Press Room</a></li>
+						<li><a href="login.php">Your Account</a></li>
+						<li><a href="contact.php">Contact Us</a></li>
+						<li><a href="product.php">Store Locator</a></li>
+						<li><a href="pressroom.php">Press Room</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
 					<ul>
-						<li><a href="terms.html">Website Terms</a></li>
+						<li><a href="terms.php">Website Terms</a></li>
 						<li><select class="country">
 										<option value="select your location">Select Country</option>
 										<option value="saab">Kenya</option>
@@ -377,7 +494,7 @@ function populateCartItems() {
 									</select>
 							
 						</li>
-						<li><a href="shortcodes.html">Short Codes</a></li>
+						<li><a href="shortcodes.php">Short Codes</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid-icon">
